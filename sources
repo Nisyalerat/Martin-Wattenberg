@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sources – Martin Wattenberg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --accent: #3b82f6;
+      --text: #f8fafb;
+      --muted: #94a3b8;
+      --border: rgba(148,163,184,0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left,#0f172a 0,#020617 55%),
+        #020617;
+      font-family: system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* CADRE PRINCIPAL – identique aux autres pages */
+    .shell {
+      width: 100%;
+      max-width: 1200px;
+      min-height: calc(100vh - 40px);
+      background: radial-gradient(circle at top,rgba(15,23,42,0.9),#020617);
+      border-radius: 28px;
+      border: 1px solid rgba(30,64,175,0.75);
+      box-shadow: 0 24px 60px rgba(15,23,42,0.95);
+      padding: 20px 32px 30px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (max-width: 900px) {
+      .shell {
+        padding: 14px 16px 20px;
+      }
+    }
+
+    /* HEADER + MENU – même style que biographie / travaux / à propos */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: conic-gradient(from 210deg,#22c55e,#f97316,#4f46e5,#22c55e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.7rem;
+      box-shadow: 0 0 0 2px #020617;
+    }
+
+    .top-nav {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .top-nav a {
+      font-weight: 500;
+      padding: 0.55rem 1.35rem;
+      min-width: 110px;
+      text-align: center;
+
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      transition: all .18s ease;
+    }
+
+    .top-nav a:hover {
+      border-color: rgba(148,163,184,0.5);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .top-nav a.active {
+      border-color: rgba(59,130,246,0.85);
+      background: radial-gradient(circle at top,
+        rgba(59,130,246,0.35),
+        rgba(59,130,246,0.08));
+      color: var(--text);
+    }
+
+    /* CONTENU SOURCES */
+    h1 {
+      font-size: 2rem;
+      margin-top: 4px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      margin: 0 0 10px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 40rem;
+    }
+
+    img.sources-img {
+      width: 100%;
+      max-width: 780px;
+      border-radius: 18px;
+      display: block;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      box-shadow:
+        0 0 0 2px rgba(59,130,246,0.4),
+        0 16px 32px rgba(0,0,0,0.45);
+    }
+
+    .sources-list {
+      margin-top: 8px;
+      padding-left: 20px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .sources-list li {
+      margin-bottom: 6px;
+    }
+
+    .sources-list a {
+      color: var(--muted);
+    }
+
+    .sources-list a:hover {
+      color: var(--text);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+<div class="shell">
+
+  <!-- HEADER + NAV -->
+  <header class="top-bar">
+    <div class="brand">
+      <div class="brand-mark">MW</div>
+      DATAVISUALISATIONS
+    </div>
+
+    <nav class="top-nav">
+      <a href="index.html">Accueil</a>
+      <a href="biographie.html">Biographie</a>
+      <a href="travaux.html">Travaux</a>
+      <a href="sources.html" class="active">Sources</a>
+      <a href="apropos.html">À propos</a>
+    </nav>
+  </header>
+
+  <!-- CONTENU -->
+  <main>
+    <h1>Sources du site</h1>
+    <p class="subtitle">
+      Ensemble des articles, pages et ressources utilisées pour rédiger les contenus du minisite dédié à Martin Wattenberg.
+    </p>
+
+    <img class="sources-img"
+         src="Fhs8lgAUYAEpzKG.jpg"
+         alt="Visuels et travaux de Martin Wattenberg" />
+
+    <ul class="sources-list">
+      <li><strong>Site personnel de Martin Wattenberg</strong> —  
+        <a href="https://www.bewitched.com" target="_blank">bewitched.com</a>
+      </li>
+
+      <li><strong>Google PAIR – People + AI Research</strong> —  
+        <a href="https://pair.withgoogle.com/" target="_blank">pair.withgoogle.com</a>
+      </li>
+
+      <li><strong>Wikipédia (EN)</strong> – Martin M. Wattenberg  
+        <a href="https://en.wikipedia.org/wiki/Martin_M._Wattenberg" target="_blank">Wikipedia – Wattenberg</a>
+      </li>
+
+      <li><strong>Hint.fm</strong> – Projets collaboratifs avec Fernanda Viégas  
+        <a href="http://hint.fm" target="_blank">hint.fm</a>
+      </li>
+
+      <li><strong>Google Research Blog</strong> – Projets PAIR, visualisation et IA  
+        <a href="https://ai.googleblog.com" target="_blank">ai.googleblog.com</a>
+      </li>
+
+      <li><strong>Martin Wattenberg – LISA 2012</strong>  
+        <a href="https://www.youtube.com/watch?v=Uu4GApawy8Y" target="_blank">
+          https://www.youtube.com/watch?v=Uu4GApawy8Y
+        </a>
+      </li>
+
+      <li><strong>Fernanda Viégas &amp; Martin Wattenberg – Keynote on Design</strong>  
+        <a href="https://www.youtube.com/watch?v=kNEmil66bfo" target="_blank">
+          https://www.youtube.com/watch?v=kNEmil66bfo
+        </a>
+      </li>
+
+      <li><strong>Seeing Machines Think — Martin Wattenberg and Fernanda Viégas</strong>  
+        <a href="https://www.youtube.com/watch?v=ugkfmHBW74Q" target="_blank">
+          https://www.youtube.com/watch?v=ugkfmHBW74Q
+        </a>
+      </li>
+    </ul>
+  </main>
+
+</div>
+</body>
+</html>
