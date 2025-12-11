@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Martin Wattenberg — Datavisualisations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Page d'accueil dédiée aux datavisualisations de Martin Wattenberg." />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --accent: #f97316;
+      --accent-2: #4f46e5;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: rgba(148,163,184,0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left,#0f172a 0,#020617 55%),
+        #020617;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* CARTE PLEIN ÉCRAN */
+
+    .shell {
+      width: 100%;
+      max-width: 1200px;
+      height: calc(100vh - 40px);
+      max-height: 720px;
+      background: radial-gradient(circle at top,rgba(15,23,42,0.85),#020617);
+      border-radius: 28px;
+      border: 1px solid rgba(30,64,175,0.75);
+      box-shadow: 0 24px 60px rgba(15,23,42,0.95);
+      padding: 16px 32px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (max-width: 900px) {
+      .shell {
+        padding: 14px 18px 20px;
+        height: calc(100vh - 30px);
+      }
+    }
+
+    .top-nav {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .top-nav a {
+      font-weight: 500;
+      padding: 0.55rem 1.35rem;
+      min-width: 110px;
+      text-align: center;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.18s ease;
+    }
+
+    .top-nav a:hover {
+      border-color: rgba(148,163,184,0.5);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .top-nav a.active {
+      border-color: rgba(59,130,246,0.85);
+      background: radial-gradient(circle at top,
+        rgba(59,130,246,0.35),
+        rgba(59,130,246,0.08));
+      color: var(--text);
+    }
+
+    /* TOP */
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: conic-gradient(from 210deg,#22c55e,var(--accent),var(--accent-2),#22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #020617;
+      box-shadow: 0 0 0 2px #020617;
+    }
+
+    /* CENTRE : TEXTE + CERCLE */
+
+    .main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .main {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    .title-block {
+      margin-top: 4px;
+    }
+
+    .title-block h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 3vw, 2.4rem);
+    }
+
+    .title-block h1 span {
+      display: block;
+      background: linear-gradient(120deg,var(--accent),var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .title-block p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 32rem;
+    }
+
+    /* PHOTO SOUS LE TEXTE */
+    .photo-main {
+      margin-top: 1.4rem;
+      max-width: 380px;
+      max-height: 380px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 2px rgba(15,23,42,0.95),
+        0 16px 38px rgba(15,23,42,0.9);
+    }
+
+    .photo-main img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* CERCLE */
+
+    .viz-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 8px;
+    }
+
+    .circle {
+      position: relative;
+      width: min(550px, 100%);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 25% 25%,rgba(248,250,252,0.35),transparent 55%),
+        radial-gradient(circle at 75% 35%,rgba(56,189,248,0.8),transparent 55%),
+        radial-gradient(circle at 30% 75%,rgba(34,197,94,0.7),transparent 55%),
+        radial-gradient(circle at 80% 80%,rgba(248,113,113,0.75),transparent 55%),
+        #020617;
+      box-shadow:
+        0 0 0 1px rgba(148,163,184,0.6),
+        0 26px 60px rgba(15,23,42,0.95);
+      overflow: hidden;
+    }
+
+    .ring {
+      position: absolute;
+      inset: 12%;
+      border-radius: 50%;
+      border: 1px dashed rgba(148,163,184,0.45);
+      animation: spin 26s linear infinite;
+    }
+
+    .ring.r2 {
+      inset: 26%;
+      border-style: solid;
+      border-width: 0;
+      border-top-width: 1px;
+      border-bottom-width: 1px;
+      border-color: rgba(148,163,184,0.55);
+      animation-duration: 32s;
+    }
+
+    /* POINTS = MENUS - ANIMATION ORBITALE */
+
+    .dot-link {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: #facc15;
+      box-shadow: 0 0 0 8px rgba(250,204,21,0.35);
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      animation: orbit 20s ease-in-out infinite;
+    }
+
+    .dot-link:hover {
+      transform: scale(1.2);
+      box-shadow:
+        0 0 0 8px rgba(250,204,21,0.6),
+        0 0 22px rgba(250,204,21,0.9);
+    }
+
+    .dot-link::after {
+      content: attr(data-label);
+      position: absolute;
+      top: 50%;
+      left: 120%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: rgba(2,6,23,0.9);
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.55);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s;
+    }
+
+    .dot-link:hover::after {
+      opacity: 1;
+    }
+
+    /* Positions initiales différentes pour chaque point */
+    .dot-bio {
+      top: 22%;
+      left: 65%;
+      animation-delay: 0s;
+    }
+
+    .dot-travaux {
+      top: 60%;
+      left: 23%;
+      animation-delay: -11.25s; /* décalage de 1/4 du cycle */
+    }
+
+    .dot-sources {
+      top: 35%;
+      left: 30%;
+      animation-delay: -22.5s; /* décalage de 1/2 du cycle */
+    }
+
+    .dot-apropos {
+      top: 72%;
+      left: 55%;
+      animation-delay: -33.75s; /* décalage de 3/4 du cycle */
+    }
+
+    .dot-travaux::after,
+    .dot-apropos::after,
+    .dot-sources::after {
+      left: auto;
+      right: 120%;
+      text-align: right;
+    }
+
+    /* ARC ANIMÉ */
+
+    .arc {
+      position: absolute;
+      width: 130%;
+      height: 130%;
+      border-radius: 50%;
+      border: 1px solid transparent;
+      border-top-color: rgba(248,250,252,0.7);
+      opacity: 0.6;
+      top: -15%;
+      left: -15%;
+      animation: sweep 16s linear infinite;
+      pointer-events: none;
+    }
+
+
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes sweep {
+      0% { transform: rotate(10deg); opacity: 0.2; }
+      50% { transform: rotate(210deg); opacity: 0.8; }
+      100% { transform: rotate(380deg); opacity: 0.2; }
+    }
+
+    @keyframes orbit {
+      0% {
+        transform: translate(0, 0);
+      }
+      12.5% {
+        transform: translate(50px, -35px);
+      }
+      25% {
+        transform: translate(60px, -15px);
+      }
+      37.5% {
+        transform: translate(50px, 25px);
+      }
+      50% {
+        transform: translate(15px, 50px);
+      }
+      62.5% {
+        transform: translate(-35px, 45px);
+      }
+      75% {
+        transform: translate(-55px, 15px);
+      }
+      87.5% {
+        transform: translate(-40px, -30px);
+      }
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="shell">
+  <header class="top-bar">
+    <div class="brand">
+      <div class="brand-mark">MW</div>
+      <div>Datavisualisations</div>
+    </div>
+
+    <nav class="top-nav" aria-label="Navigation principale">
+      <a href="index.html" class="active">Accueil</a>
+      <a href="biographie.html">Biographie</a>
+      <a href="travaux.html">Travaux</a>
+      <a href="sources.html">Sources</a>
+      <a href="apropos.html">À propos</a>
+    </nav>
+  </header>
+
+  <div class="main">
+    <!-- TEXTE + PHOTO -->
+    <section class="title-block">
+      <h1>Martin Wattenberg<br><span>Cartographier les données</span></h1>
+      <p>
+        Martin Wattenberg est un chercheur et artiste américain spécialisé dans la visualisation de données.
+        De la <em>Map of the Market</em> à ses projets chez Google et à Harvard, il conçoit des interfaces
+        qui transforment des masses de chiffres en paysages visuels lisibles, interactifs et accessibles.
+      </p>
+
+      <div class="photo-main">
+        <img src="Wattenberg2014.jpg" alt="Martin Wattenberg lors d'une interview" />
+      </div>
+    </section>
+
+    <!-- CERCLE + MENUS -->
+    <section class="viz-wrap" aria-label="Navigation par les points du cercle">
+      <div class="circle">
+        <div class="ring"></div>
+        <div class="ring r2"></div>
+
+        <!-- Menus -->
+        <a href="biographie.html" class="dot-link dot-bio" data-label="Biographie"></a>
+        <a href="travaux.html" class="dot-link dot-travaux" data-label="Travaux"></a>
+        <a href="apropos.html" class="dot-link dot-apropos" data-label="À propos"></a>
+        <a href="sources.html" class="dot-link dot-sources" data-label="Sources"></a>
+
+        <div class="arc"></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="bottom">
+  </div>
+</div>
+
+</body>
+</html>
