@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Biographie — Martin Wattenberg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Biographie de Martin Wattenberg, chercheur et artiste spécialisé dans la visualisation de données." />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --accent: #f97316;
+      --accent-2: #4f46e5;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: rgba(148,163,184,0.4);
+      --card: rgba(15,23,42,0.96);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left,#0f172a 0,#020617 55%),
+        #020617;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* CADRE PRINCIPAL */
+
+    .shell {
+      width: 100%;
+      max-width: 1200px;
+      min-height: calc(100vh - 40px);
+      background: radial-gradient(circle at top,rgba(15,23,42,0.9),#020617);
+      border-radius: 28px;
+      border: 1px solid rgba(30,64,175,0.75);
+      box-shadow: 0 24px 60px rgba(15,23,42,0.95);
+      padding: 16px 32px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (max-width: 900px) {
+      .shell {
+        padding: 14px 16px 20px;
+      }
+    }
+
+    /* TOP BAR */
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: conic-gradient(from 210deg,#22c55e,var(--accent),var(--accent-2),#22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #020617;
+      box-shadow: 0 0 0 2px #020617;
+    }
+
+    .top-nav {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .top-nav a {
+      font-weight: 500;
+      padding: 0.55rem 1.35rem;
+      min-width: 110px;
+      text-align: center;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.18s ease;
+    }
+
+    .top-nav a:hover {
+      border-color: rgba(148,163,184,0.5);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .top-nav a.active {
+      border-color: rgba(59,130,246,0.85);
+      background: radial-gradient(circle at top,
+        rgba(59,130,246,0.35),
+        rgba(59,130,246,0.08));
+      color: var(--text);
+    }
+
+    /* LAYOUT BIOGRAPHIE */
+
+    .bio-layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(260px, 0.9fr);
+      gap: 28px;
+      align-items: flex-start;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .bio-layout {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    /* ARTICLE PRINCIPAL */
+
+    .bio-article {
+      background: radial-gradient(circle at top left,rgba(30,64,175,0.18),rgba(15,23,42,0.96));
+      border-radius: 20px;
+      border: 1px solid rgba(30,64,175,0.7);
+      padding: 18px 20px 18px;
+      overflow-y: auto;
+      max-height: 100%;
+    }
+
+    .bio-article h1 {
+      margin: 0 0 0.4rem;
+      font-size: 1.6rem;
+    }
+
+    .bio-article .subtitle {
+      margin: 0 0 0.8rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .bio-article p {
+      margin: 0.3rem 0 0.7rem;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #e5e7eb;
+    }
+
+    .bio-article h2 {
+      margin: 0.9rem 0 0.3rem;
+      font-size: 1.05rem;
+      border-bottom: 1px solid rgba(148,163,184,0.35);
+      padding-bottom: 0.15rem;
+    }
+
+    .bio-article ul {
+      margin: 0.2rem 0 0.7rem 1.2rem;
+      padding: 0;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    /* SOMMAIRE TYPE WIKIPÉDIA */
+
+    .toc {
+      margin: 0.6rem 0 0.9rem;
+      padding: 0.6rem 0.8rem;
+      border-radius: 12px;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(148,163,184,0.5);
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .toc h2 {
+      margin: 0 0 0.3rem;
+      font-size: 0.9rem;
+      border: none;
+      padding: 0;
+    }
+
+    .toc ol {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+
+    .toc li {
+      margin: 0.1rem 0;
+    }
+
+    .toc a {
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      text-decoration: underline;
+      color: #e5e7eb;
+    }
+
+    /* INFOBOX TYPE WIKIPÉDIA */
+
+    .bio-infobox {
+      background: radial-gradient(circle at top,rgba(37,99,235,0.25),rgba(15,23,42,0.97));
+      border-radius: 20px;
+      border: 1px solid rgba(59,130,246,0.7);
+      padding: 14px 14px 16px;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .infobox-title {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .infobox-photo {
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 0.7rem;
+      box-shadow:
+        0 0 0 2px rgba(15,23,42,0.95),
+        0 14px 30px rgba(15,23,42,0.9);
+    }
+
+    .infobox-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .infobox-dl {
+      margin: 0;
+    }
+
+    .infobox-dl dt {
+      font-weight: 600;
+      margin-top: 0.35rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .infobox-dl dd {
+      margin: 0.05rem 0 0.1rem;
+      font-size: 0.9rem;
+    }
+
+    /* BAS DE PAGE */
+
+    .bottom {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(30,64,175,0.7);
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    @media (max-width: 700px) {
+      .bottom {
+        flex-direction: column;
+      }
+    }
+
+    /* SOURCES */
+    .sources-box {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(30,64,175,0.6);
+      font-size: 0.86rem;
+      color: var(--muted);
+      text-align: left;
+    }
+
+    .sources-box h2 {
+      margin: 0 0 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .sources-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .sources-box li a {
+      color: var(--muted);
+    }
+
+    .sources-box li a:hover {
+      color: var(--text);
+      text-decoration: underline;
+    }
+
+    .bottom.sources-box {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="shell">
+  <header class="top-bar">
+    <div class="brand">
+      <div class="brand-mark">MW</div>
+      <div>Datavisualisations</div>
+    </div>
+
+    <nav class="top-nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="biographie.html" class="active">Biographie</a>
+      <a href="travaux.html">Travaux</a>
+      <a href="sources.html">Sources</a>
+      <a href="apropos.html">À propos</a>
+    </nav>
+  </header>
+
+  <main class="bio-layout">
+    <!-- ARTICLE PRINCIPAL -->
+    <article class="bio-article">
+      <h1>Martin M. Wattenberg</h1>
+      <p class="subtitle">Scientifique et artiste américain, spécialiste de la visualisation de données.</p>
+
+      <p>
+        Martin M. Wattenberg (né en 1970) est un chercheur et artiste américain dont le travail a largement
+        contribué à populariser la visualisation de données auprès du grand public. Formé aux mathématiques
+        et aux sciences informatiques, il développe depuis la fin des années 1990 des interfaces qui
+        transforment des ensembles de données complexes en cartes, diagrammes et paysages visuels
+        interactifs. Avec sa collaboratrice de longue date Fernanda Viégas, il a notamment dirigé des
+        équipes de recherche chez IBM puis Google, tout en menant une pratique artistique exposée dans
+        de grands musées.
+      </p>
+
+      <!-- SOMMAIRE -->
+      <nav class="toc" aria-label="Sommaire">
+        <h2>Sommaire</h2>
+        <ol>
+          <li><a href="#jeunesse">Jeunesse et formation</a></li>
+          <li><a href="#journalisme">Journalisme interactif</a></li>
+          <li><a href="#recherche">Recherche en visualisation</a></li>
+          <li><a href="#collaborations">Collaborations et carrière récente</a></li>
+          <li><a href="#oeuvres">Travaux et projets emblématiques</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="jeunesse">Jeunesse et formation</h2>
+      <p>
+        Martin Wattenberg grandit à Amherst, dans le Massachusetts. Il obtient un premier diplôme
+        universitaire (<em>A.B.</em>) à l'université Brown en 1991, puis un master en informatique à 
+        Stanford en 1992. En 1996, il soutient un doctorat en mathématiques à l'université de
+        Californie à Berkeley, consacré aux systèmes dynamiques sur le cercle. Cette double culture
+        entre mathématiques pures et informatique influencera durablement son approche de la
+        visualisation, très attentive à la fois aux algorithmes et à l'expérience des utilisateurs. 
+      </p>
+
+      <h2 id="journalisme">Journalisme interactif</h2>
+      <p>
+        De 1996 à 2002, Wattenberg travaille à New York pour <em>SmartMoney.com</em>, un site de
+        finances personnelles alors exploité par Dow Jones. Il y conçoit de nouveaux formats de
+        journalisme interactif, mêlant textes, graphiques et simulations en ligne. En 1998, il
+        développe la <em>Map of the Market</em>, treemap boursière qui cartographie en un coup d'œil
+        la performance de centaines d'actions. Souvent citée comme l'un des premiers grands exemples
+        de datavisualisation sur le Web, cette carte est largement imitée et contribue à diffuser le
+        principe des treemaps dans les médias et la finance.
+      </p>
+
+      <h2 id="recherche">Recherche en visualisation</h2>
+      <p>
+        En 2002, Wattenberg rejoint le centre de recherche Thomas J. Watson d'IBM à Cambridge
+        (Massachusetts). Il y fonde le <em>Visual Communication Lab</em>, un laboratoire dédié aux
+        usages collaboratifs de la visualisation de données. Avec Fernanda Viégas, il explore la
+        manière dont des visualisations partagées peuvent soutenir la discussion, l'édition collective
+        ou encore la compréhension de phénomènes sociaux.
+      </p>
+      <p>
+        Ensemble, ils conçoivent plusieurs techniques devenues des classiques de la visualisation :
+        <em>History Flow</em>, qui représente l'évolution d'articles Wikipédia et met en évidence la
+        réparation du vandalisme ; les <em>Arc Diagrams</em>, qui montrent la structure de séquences
+        ou de réseaux ; ou encore des visualisations textuelles comme le <em>Word Tree</em> et
+        le <em>Chromogram</em>. En 2007, ils lancent <em>Many Eyes</em>, une plateforme qui permet à 
+        n'importe quel internaute de mettre en forme ses propres jeux de données en ligne.
+      </p>
+
+      <h2 id="collaborations">Collaborations et carrière récente</h2>
+      <p>
+        En 2010, Wattenberg et Viégas créent le studio <em>Flowing Media</em>, orienté vers la
+        visualisation pour les médias et le grand public, avant de rejoindre quelques mois plus tard
+        Google à Cambridge. Ils y dirigent le groupe de visualisation de données « Big Picture »,
+        puis travaillent plus largement sur les interactions entre intelligence artificielle, outils
+        de visualisation et utilisateurs.
+      </p>
+      <p>
+        Parallèlement à son activité industrielle, Wattenberg poursuit une carrière académique. Il
+        est nommé professeur de sciences informatiques à la Harvard School of Engineering and Applied
+        Sciences, où il enseigne et encadre des recherches sur la visualisation de données, les
+        interfaces exploratoires et la compréhension visuelle de grands ensembles d'informations.
+      </p>
+
+      <h2 id="oeuvres">Travaux et projets emblématiques</h2>
+      <p>
+        En dehors des environnements d'entreprise, Martin Wattenberg réalise de nombreuses œuvres
+        interactives, souvent accessibles en ligne. Il s'intéresse aussi bien aux marchés financiers
+        qu'aux prénoms, aux partitions musicales ou aux textes de chansons, dès lors que ces données
+        permettent de révéler des structures cachées.
+      </p>
+      <ul>
+        <li><strong>Map of the Market</strong> — treemap boursière interactive conçue pour SmartMoney, largement reprise ensuite.</li>
+        <li><strong>Baby Name Voyager</strong> — exploration des prénoms américains sur plus d'un siècle, devenue une référence populaire.</li>
+        <li><strong>History Flow</strong> — visualisation de l'édition collaborative d'articles Wikipédia.</li>
+        <li><strong>Many Eyes</strong> — plateforme publique de datavisualisation développée chez IBM.</li>
+        <li><strong>Shape of Song</strong> et la série <strong>Fleshmap</strong> — projets artistiques exposés dans plusieurs musées, dont le MoMA.</li>
+      </ul>
+      <p>
+        L'ensemble de ces travaux place Wattenberg à la croisée de l'art, de la recherche et du
+        design d'information : ses projets servent autant de laboratoires pour de nouvelles
+        formes visuelles que d'outils concrets pour explorer des données complexes.
+      </p>
+    </article>
+
+    <!-- INFOBOX -->
+    <aside class="bio-infobox" aria-label="Informations générales sur Martin Wattenberg">
+      <div class="infobox-title">Martin M. Wattenberg</div>
+
+      <div class="infobox-photo">
+        <img src="Wattenberg_600x900.png" alt="Portrait de Martin Wattenberg" />
+      </div>
+
+      <dl class="infobox-dl">
+        <dt>Naissance</dt>
+        <dd>1970, États-Unis</dd>
+
+        <dt>Nationalité</dt>
+        <dd>Américain</dd>
+
+        <dt>Domaines</dt>
+        <dd>Visualisation de données, art numérique, journalisme interactif</dd>
+
+        <dt>Institutions</dt>
+        <dd>SmartMoney, IBM Research, Google, Harvard University</dd>
+
+        <dt>Formation</dt>
+        <dd>A.B. Brown University (1991)<br />
+            M.S. Stanford University (1992)<br />
+            Ph.D. en mathématiques, UC Berkeley (1996)</dd>
+
+        <dt>Collaborations clés</dt>
+        <dd>Fernanda Viégas, Marek Walczak, Zan Armstrong…</dd>
+
+        <dt>Projets marquants</dt>
+        <dd>Map of the Market, History Flow, Many Eyes, Baby Name Voyager, Fleshmap</dd>
+      </dl>
+    </aside>
+  </main>
+
+  <div class="bottom sources-box">
+    <h2>Sources</h2>
+    <ul>
+      <li><a href="https://www.bewitched.com" target="_blank">Site personnel de Martin Wattenberg (bewitched.com)</a></li>
+      <li><a href="https://pair.withgoogle.com/" target="_blank">Google PAIR — People + AI Research</a></li>
+      <li><a href="https://datavizhistory.com" target="_blank">Dataviz History — articles sur Many Eyes et History Flow</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Martin_Wattenberg" target="_blank">Wikipédia — Martin M. Wattenberg (EN)</a></li>
+      <li><a href="https://hint.fm" target="_blank">Hint.fm — Projets artistiques (avec Fernanda Viégas)</a></li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>
